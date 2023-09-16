@@ -1,0 +1,31 @@
+---
+- name: Week 2 Homework 
+  hosts: cislinuxserver
+  gather_facts: true
+
+  tasks:
+    - name: Output Disk Size
+      ansible.builtin.debug:
+        msg: "Total Disk Size: {{ ansible_facts['devices']['sda'].size }}"
+
+    - name: Output Total RAM
+      ansible.builtin.debug:
+        msg: "Total RAM: {{ ansible_facts['memory_mb']['real'].total }} MB"
+
+    - name: Output Hostname
+      ansible.builtin.debug:
+        msg: "Hostname: {{ ansible_facts['hostname']}}" 
+
+
+    - name: Output Total Cores
+      ansible.builtin.debug:
+        msg: "Total Cores: {{ ansible_facts['processor_cores']}}"
+
+
+    - name: Output Major Distribution
+      ansible.builtin.debug:
+        msg: "Major Family: {{ ansible_facts['os_family']}}"
+
+    - name: Output IP Address
+      ansible.builtin.debug:
+        msg: "IP Address: {{ ansible_default_ipv4.address }}"
